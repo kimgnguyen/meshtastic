@@ -2099,19 +2099,19 @@ void Screen::setFrames()
 #endif
 
     // If we have a text message - show it next, unless it's a phone message and we aren't using any special modules
-    if (devicestate.has_rx_text_message && shouldDrawMessage(&devicestate.rx_text_message)) {
-        normalFrames[numframes++] = drawTextMessageFrame;
-    }
+//    if (devicestate.has_rx_text_message && shouldDrawMessage(&devicestate.rx_text_message)) {
+//        normalFrames[numframes++] = drawTextMessageFrame;
+//    }
     // If we have a waypoint - show it next, unless it's a phone message and we aren't using any special modules
-    if (devicestate.has_rx_waypoint && shouldDrawMessage(&devicestate.rx_waypoint)) {
-        normalFrames[numframes++] = drawWaypointFrame;
-    }
+ //   if (devicestate.has_rx_waypoint && shouldDrawMessage(&devicestate.rx_waypoint)) {
+//        normalFrames[numframes++] = drawWaypointFrame;
+//    }
 
     // then all the nodes
     // We only show a few nodes in our scrolling list - because meshes with many nodes would have too many screens
-    size_t numToShow = min(numMeshNodes, 4U);
-    for (size_t i = 0; i < numToShow; i++)
-        normalFrames[numframes++] = drawNodeInfo;
+//    size_t numToShow = min(numMeshNodes, 4U);
+//    for (size_t i = 0; i < numToShow; i++)
+//        normalFrames[numframes++] = drawNodeInfo;
 
     // then the debug info
     //
