@@ -16,8 +16,10 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_TRACKER_T1000_E_
-#define _VARIANT_TRACKER_T1000_E_
+#ifndef _VARIANT_ME25LS01_4Y10TD_
+#define _VARIANT_ME25LS01_4Y10TD_
+
+#define ME25LS01
 
 /** Master clock frequency */
 #define VARIANT_MCK (64000000ul)
@@ -43,27 +45,26 @@ extern "C" {
 // Use the native nrf52 usb power detection
 #define NRF_APM
 
-#define PIN_3V3_EN (32 + 6)     // P1.6, Power to Sensors
-#define PIN_3V3_ACC_EN (32 + 7) // P1.7, Power to Acc
+#define PIN_3V3_EN (32 + 5) //-1
+#define PIN_3V3_ACC_EN -1
 
-#define PIN_LED1 (0 + 24) // P0.24
+#define PIN_LED1 (32 + 7) // P1.07 Blue D2
+
 #define LED_PIN PIN_LED1
 #define LED_BUILTIN -1
-#define LED_BLUE -1    // Actually green
+
+#define LED_BLUE -1
 #define LED_STATE_ON 1 // State when LED is lit
 
-#define BUTTON_PIN (0 + 6) // P0.6
-#define BUTTON_ACTIVE_LOW false
-#define BUTTON_ACTIVE_PULLUP false
-#define BUTTON_SENSE_TYPE 0x6
+#define BUTTON_PIN (0 + 27) // P0.27 K3
+#define BUTTON_NEED_PULLUP
 
 #define HAS_WIRE 1
 
 #define WIRE_INTERFACES_COUNT 1
 
-// unused pins
-#define PIN_WIRE_SDA (0 + 9)  // P0.26
-#define PIN_WIRE_SCL (0 + 10) // P0.27
+#define PIN_WIRE_SDA (0 + 15) // P0.15
+#define PIN_WIRE_SCL (0 + 17) // P0.17
 
 /*
  * Serial interfaces
@@ -76,14 +77,14 @@ extern "C" {
 
 #define SPI_INTERFACES_COUNT 1
 
-#define PIN_SPI_MISO (32 + 8) // P1.08
-#define PIN_SPI_MOSI (32 + 9) // P1.09
-#define PIN_SPI_SCK (0 + 11)  // P0.11
-#define PIN_SPI_NSS (0 + 12)  // P0.12
+#define PIN_SPI_MISO (0 + 29) // P0.20 // MISO
+#define PIN_SPI_MOSI (0 + 2)  // P0.02 // MOSI
+#define PIN_SPI_SCK (32 + 15) // P1.15 // SCK
+#define PIN_SPI_NSS (32 + 13) // P1.13 // NSS
 
-#define LORA_RESET (32 + 10) // P1.10 // RST
-#define LORA_DIO1 (32 + 1)   // P1.01 // IRQ
-#define LORA_DIO2 (0 + 7)    // P0.07 // BUSY
+#define LORA_RESET (32 + 11) // P1.11 // RST
+#define LORA_DIO1 (32 + 12)  // P1.12 // IRQ
+#define LORA_DIO2 (32 + 10)  // P1.10 // BUSY
 #define LORA_SCK PIN_SPI_SCK
 #define LORA_MISO PIN_SPI_MISO
 #define LORA_MOSI PIN_SPI_MOSI
@@ -104,26 +105,17 @@ extern "C" {
 #define LR11X0_DIO_AS_RF_SWITCH
 #define LR11X0_DIO_RF_SWITCH_CONFIG 0x0f, 0x0, 0x09, 0x0B, 0x0A, 0x0, 0x4, 0x0
 
-#define HAS_GPS 1
-#define GNSS_AIROHA
-#define GPS_RX_PIN PIN_SERIAL1_RX
-#define GPS_TX_PIN PIN_SERIAL1_TX
+#define HAS_GPS 0
 
-#define GPS_BAUDRATE 115200
-
-#define PIN_GPS_EN (32 + 11) // P1.11
+#define PIN_GPS_EN -1
 #define GPS_EN_ACTIVE HIGH
+#define PIN_GPS_RESET -1
+#define GPS_VRTC_EN -1
+#define GPS_SLEEP_INT -1
+#define GPS_RTC_INT -1
+#define GPS_RESETB_OUT -1
 
-#define PIN_GPS_RESET (32 + 15) // P1.15
-#define GPS_RESET_MODE HIGH
-
-#define GPS_VRTC_EN (0 + 8)      // P0.8, awlays high
-#define GPS_SLEEP_INT (32 + 12)  // P1.12, awlays high
-#define GPS_RTC_INT (0 + 15)     // P0.15, normal is LOW, wake by HIGH
-#define GPS_RESETB_OUT (32 + 14) // P1.14, awlays input pull_up
-
-#define GPS_FIX_HOLD_TIME 15000 // ms
-#define BATTERY_PIN 2
+#define BATTERY_PIN -1
 #define ADC_MULTIPLIER (2.0F)
 
 #define ADC_RESOLUTION 14
@@ -134,13 +126,7 @@ extern "C" {
 #define VBAT_AR_INTERNAL AR_INTERNAL_3_0
 
 // Buzzer
-#define BUZZER_EN_PIN (32 + 5) // P1.05, awlays high
-#define PIN_BUZZER (0 + 25)    // P0.25, pwm output
-
-#define T1000X_SENSOR_EN
-#define T1000X_VCC_PIN (0 + 4)  // P0.4
-#define T1000X_NTC_PIN (0 + 31) // P0.31
-#define T1000X_LUX_PIN (0 + 29) // P0.29
+#define BUZZER_EN_PIN -1
 
 #ifdef __cplusplus
 }
@@ -150,4 +136,4 @@ extern "C" {
  *        Arduino objects - C++ only
  *----------------------------------------------------------------------------*/
 
-#endif // _VARIANT_TRACKER_T1000_E_
+#endif // _VARIANT_ME25LS01_4Y10TD_

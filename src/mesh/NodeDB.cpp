@@ -303,12 +303,16 @@ void NodeDB::installDefaultConfig()
          meshtastic_Config_PositionConfig_PositionFlags_SPEED | meshtastic_Config_PositionConfig_PositionFlags_HEADING |
          meshtastic_Config_PositionConfig_PositionFlags_DOP | meshtastic_Config_PositionConfig_PositionFlags_SATINVIEW);
 
-#ifdef RADIOMASTER_900_BANDIT_NANO
+#ifdef DISPLAY_FLIP_SCREEN
     config.display.flip_screen = true;
 #endif
 #ifdef T_WATCH_S3
     config.display.screen_on_secs = 30;
     config.display.wake_on_tap_or_motion = true;
+#endif
+#ifdef HELTEC_VISION_MASTER_E290
+    // Orient so that LoRa antenna faces up
+    config.display.flip_screen = true;
 #endif
 
     initConfigIntervals();
@@ -1006,7 +1010,8 @@ meshtastic_NodeInfoLite *NodeDB::getOrCreateMeshNode(NodeNum n)
         if ((numMeshNodes >= MAX_NUM_NODES) || (memGet.getFreeHeap() < meshtastic_NodeInfoLite_size * 3)) {
             if (screen)
                 screen->print("Warn: node database full!\nErasing oldest entry\n");
-            LOG_WARN("Node database full! Erasing oldest entry\n");
+            LOG_WARN("Node database full with %i nodes and %i bytes free! Erasing oldest entry\n", numMeshNodes,
+                     memGet.getFreeHeap());
             // look for oldest node and erase it
             uint32_t oldest = UINT32_MAX;
             int oldestIndex = -1;
